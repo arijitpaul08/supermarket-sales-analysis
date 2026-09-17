@@ -1,0 +1,250 @@
+SUPERMARKET SALES ANALYSIS
+Internship Data Analytics Project Report
+
+
+Submitted by
+Arijit Paul
+
+BCA – Data Analytics / Machine Learning
+Academic / Internship Project
+2026
+
+
+1. Abstract
+This project presents an end-to-end analysis of a supermarket sales dataset containing 500 transactions. The source data was supplied as a PDF and was converted into a structured CSV using Python and PyMuPDF. The extracted data was cleaned and validated using Pandas, with Sales calculated from Quantity × Unit Price. The project then analyzes sales performance by product, category, branch, customer type, gender, payment method and month. Interactive visualizations were created with Plotly and an interactive Streamlit dashboard was developed. The results were also independently compared with the benchmark results stated in the project manual.
+2. Introduction
+Retail transaction data contains useful information for understanding sales performance, customer behavior and payment patterns. A structured analytical workflow helps transform raw transaction records into reliable business information. This project demonstrates that workflow using Python, Pandas and interactive visualization tools.
+3. Problem Statement
+The objective is to analyze supermarket sales transactions and identify useful information about products, branches, categories, customers, payment methods and ratings. The project also requires data-quality checking, calculation of sales values, summary statistics and meaningful visualizations.
+4. Objectives
+Extract the supplied supermarket transaction table from PDF format.
+Convert the extracted records into a structured CSV dataset.
+Clean and validate dates, numeric values, categories and identifiers.
+Calculate Sales using Quantity × Unit Price.
+Analyze sales by product, branch, category, customer type and payment method.
+Study customer ratings and monthly sales trends.
+Create interactive charts and a Streamlit dashboard.
+Verify the project-manual benchmark results against independently calculated results.
+5. Dataset Description
+The source contains 500 supermarket sales transactions. The extracted schema contains 13 fields: Invoice ID, Date, Branch, City, Customer Type, Gender, Product, Category, Quantity, Unit Price, Payment, Rating and Sales.
+Field
+Description
+
+Invoice ID
+Unique transaction identifier
+
+Date
+Transaction date
+
+Branch
+Store branch identifier
+
+City
+Branch city
+
+Customer Type
+Member or Normal
+
+Gender
+Customer gender field
+
+Product
+Product name
+
+Category
+Product category
+
+Quantity
+Units purchased
+
+Unit Price
+Price per unit
+
+Payment
+Payment method
+
+Rating
+Customer rating
+
+Sales
+Transaction sales value
+
+6. Technologies Used
+Python
+Pandas
+NumPy
+PyMuPDF
+Plotly
+Streamlit
+Jupyter Notebook
+Pytest
+7. Data Extraction Method
+The PDF contains line-wrapped transaction records. The extraction process therefore does not assume that every PDF text line represents one complete transaction. PyMuPDF extracts text from all pages, invoice identifiers are used to delimit records, whitespace is normalized, and controlled category and payment values are used to parse the complete record. The resulting extraction produced exactly 500 transaction rows with invoice IDs INV0001 through INV0500.
+8. Data Cleaning and Validation
+Validation
+Result
+
+Rows extracted
+500
+
+Unique invoice IDs
+500
+
+Missing values
+0
+
+Duplicate rows
+0
+
+Duplicate invoice IDs
+0
+
+Invalid quantity/unit price
+0
+
+Invalid ratings
+0
+
+Sales arithmetic mismatches
+0
+
+Sales was recalculated from Quantity × Unit Price after validation. The analysis does not modify transaction values to force agreement with the project manual.
+9. Exploratory Data Analysis
+9.1 Key Performance Indicators
+KPI
+Result
+
+Total Sales
+₹244,411.08
+
+Transactions
+500
+
+Units Sold
+2,768
+
+Average Transaction
+₹488.82
+
+Average Rating
+3.99 / 5
+
+9.2 Branch Analysis
+Branch C (Mumbai): ₹72,469.45
+Branch B (Delhi): ₹64,116.26
+Branch D (Bengaluru): ₹55,468.29
+Branch A (Jaipur): ₹52,357.08
+9.3 Category Analysis
+Beverages: ₹56,108.24
+Personal Care: ₹45,943.96
+Dairy: ₹43,992.00
+Grocery: ₹40,470.47
+Fruits: ₹23,263.17
+Snacks: ₹16,992.97
+Vegetables: ₹11,124.17
+Bakery: ₹6,516.10
+9.4 Product Analysis
+Cheese: ₹27,906.30
+Coffee: ₹27,694.87
+Shampoo: ₹27,497.48
+Cooking Oil: ₹21,525.06
+Tea: ₹17,681.59
+Apples: ₹17,057.41
+Face Wash: ₹11,946.85
+Rice: ₹11,754.17
+9.5 Customer Analysis
+Member: 296 transactions; total sales ₹143,009.30; average transaction ₹483.14; average rating 4.01/5.
+Normal: 204 transactions; total sales ₹101,401.78; average transaction ₹497.07; average rating 3.97/5.
+9.6 Payment Analysis
+UPI: 127 transactions; sales ₹67,910.33.
+Net Banking: 126 transactions; sales ₹65,194.93.
+Card: 125 transactions; sales ₹57,265.64.
+Cash: 122 transactions; sales ₹54,040.18.
+9.7 Monthly Sales
+2026-01: ₹43,415.53
+2026-02: ₹30,068.15
+2026-03: ₹37,306.42
+2026-04: ₹52,569.77
+2026-05: ₹42,542.31
+2026-06: ₹35,041.46
+2026-07: ₹3,467.44
+July has relatively few source transactions, so its lower sales value should not be interpreted as a complete-month seasonal comparison.
+10. Manual Benchmark Verification
+The project manual provides benchmark results for selected metrics. These values were treated only as verification targets. The actual analytical results were independently calculated from the extracted and cleaned dataset.
+Metric
+Actual
+Manual
+Match
+
+Highest product sales
+27906.30
+27906.30
+Yes
+
+Best branch sales
+72469.45
+72469.45
+Yes
+
+Highest category sales
+56108.24
+56108.24
+Yes
+
+Most-used payment
+127.00
+127.00
+Yes
+
+Member average
+483.14
+483.14
+Yes
+
+Normal average
+497.07
+497.07
+Yes
+
+Average rating
+3.99
+3.99
+Yes
+
+All listed manual benchmark checks matched within the project tolerance of ₹0.01 / 0.01.
+11. Dashboard
+The Streamlit dashboard provides KPI cards and interactive filters for Branch, City, Category, Product, Customer Type, Gender, Payment and Date. Dashboard tabs cover overview, products/categories, customers/payments, and data quality/manual verification. Plotly is used for interactive charts.
+12. Business Insights
+Branch C (Mumbai) records the highest sales in the extracted dataset.
+Beverages is the highest-sales category.
+Cheese, Coffee and Shampoo are the three highest-sales products.
+Members account for 296 of 500 transactions, while Normal customers account for 204.
+UPI is the most-used payment method with 127 transactions.
+April records the highest monthly sales in the extracted period; July has comparatively few source transactions.
+13. Recommendations
+Monitor stock availability for high-sales products such as Cheese, Coffee and Shampoo.
+Study the product/store mix associated with Branch C and identify practices that may be useful for other branches.
+Continue supporting UPI while retaining alternative payment methods because usage is distributed across the available options.
+Use rating analysis to identify products or service areas that may require improvement.
+Consider the difference between Member and Normal average transaction values when designing membership offers.
+14. Project Structure
+The repository contains the Jupyter Notebook, Streamlit dashboard, reusable source modules, requirements file, tests, source PDFs, processed CSV files and analytical verification outputs.
+15. Testing
+Automated project tests were executed successfully for extraction shape and invoice IDs, data cleaning and Sales arithmetic, manual benchmark verification and key analytical results. Python source files were also syntax-compiled successfully. A browser-level Streamlit launch could not be completed in the build environment because Streamlit was not installed there and external package installation was unavailable; the dependency is listed in requirements.txt for normal local execution.
+16. Limitations
+The source dataset does not contain profit, cost, inventory, discount or customer-ID fields.
+The source PDF is treated as the authoritative transaction source.
+July contains relatively few transactions, limiting direct full-month seasonal interpretation.
+The dashboard requires the listed Python dependencies to be installed in the execution environment.
+17. Future Scope
+Add profit-margin analysis if cost data becomes available.
+Add inventory and stock-out analysis if inventory data is available.
+Add customer-level segmentation if customer identifiers become available.
+Deploy the Streamlit dashboard to a cloud platform.
+Add automated scheduled refresh when a continuously updated data source is available.
+18. Conclusion
+The project demonstrates a complete data analytics pipeline from PDF extraction to validated data, exploratory analysis, interactive visualization and dashboard presentation. The final dataset contains 500 validated transactions, and the principal benchmark values in the project manual were reproduced independently from the data. The resulting notebook, dashboard and supporting files provide a reproducible internship-level submission.
+19. References
+Supplied Supermarket Sales Dataset PDF: data/raw/SUPER MARKET DATA.pdf
+Supplied Supermarket Sales Analysis Project Manual: data/raw/Supermarket Sales Analysis DA project.pdf
+Python documentation and package documentation for Pandas, NumPy, PyMuPDF, Plotly and Streamlit.
